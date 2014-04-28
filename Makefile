@@ -9,4 +9,4 @@ push:
 	docker push $(REGISTRY)$(REPO)
 
 build:
-	docker build -t $(TAG) -rm .
+	docker build -t $(TAG) --rm .

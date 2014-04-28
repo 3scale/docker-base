@@ -1,4 +1,4 @@
-FROM stackbrew/ubuntu:precise
+FROM stackbrew/ubuntu:trusty
 
 MAINTAINER Michal Cichra <michal@3scale.net>
 
