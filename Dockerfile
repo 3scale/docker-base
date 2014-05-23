@@ -17,7 +17,6 @@ RUN apt-mark hold initscripts udev plymouth mountall \
  && echo 'APT {Install-Recommends="false";Install-Suggests="false";};' > /etc/apt/apt.conf.d/no-recommends \
  && echo "APT::Periodic::Unattended-Upgrade "0";" >> /etc/apt/apt.conf.d/10periodic \
  && rm /etc/cron.weekly/fstrim \
- && rm /etc/cron.daily/apt \
  && rm /etc/cron.daily/dpkg \
  && rm /etc/cron.daily/passwd
 
