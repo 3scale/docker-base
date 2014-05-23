@@ -15,6 +15,7 @@ RUN apt-mark hold initscripts udev plymouth mountall \
  && echo "force-unsafe-io" > /etc/dpkg/dpkg.cfg.d/02apt-speedup \
  && echo "Acquire::http {No-Cache=True;};" > /etc/apt/apt.conf.d/no-cache \
  && echo 'APT {Install-Recommends="false";Install-Suggests="false";};' > /etc/apt/apt.conf.d/no-recommends \
+ && echo "APT::Periodic::Unattended-Upgrade "0";" >> /etc/apt/apt.conf.d/10periodic \
  && rm /etc/cron.weekly/fstrim \
  && rm /etc/cron.daily/apt \
  && rm /etc/cron.daily/dpkg \
