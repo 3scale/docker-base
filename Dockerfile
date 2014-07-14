@@ -20,4 +20,7 @@ RUN apt-mark hold initscripts udev plymouth mountall \
  && rm /etc/cron.daily/dpkg \
  && rm /etc/cron.daily/passwd
 
+ADD apt-install /usr/local/bin/
+ENV NUM_CPU grep -c processor /proc/cpuinfo
+
 # Do not apt-get update here as the downloaded lists would be part of the image
