@@ -10,3 +10,6 @@ release: build push
 push:
 	docker tag $(TAG) $(IMAGE)
 	docker push $(IMAGE)
+
+bash:
+	docker run -it $(IMAGE) bash
