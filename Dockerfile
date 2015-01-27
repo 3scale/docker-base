@@ -2,9 +2,6 @@ FROM ubuntu:precise
 
 MAINTAINER Michal Cichra <michal@3scale.net> # 2014-06-11
 
-# non interactive apt
-ENV DEBIAN_FRONTEND noninteractive
-
 RUN apt-mark hold initscripts udev plymouth mountall \
  && dpkg-divert --local --rename --add /sbin/initctl \
  && ln -sf /bin/true /sbin/initctl \
@@ -19,7 +16,8 @@ RUN apt-mark hold initscripts udev plymouth mountall \
  && rm /etc/cron.daily/dpkg \
  && rm /etc/cron.daily/passwd
 
-ADD apt-install /usr/local/bin/
-ENV NUM_CPU grep -c processor /proc/cpuinfo
+COPY apt-install /usr/local/bin/
+COPY sources.list /etc/apt/
+ENV NUM_CPU="grep -c processor /proc/cpuinfo" DEBIAN_FRONTEND=noninteractive
 
 # Do not apt-get update here as the downloaded lists would be part of the image
